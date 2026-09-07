@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "0.1.46"
+  version: "0.1.49"
 
 package:
   name: rsloop
@@ -9,10 +9,10 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/r/rsloop/rsloop-${{ version }}.tar.gz
-    sha256: 5d745cce43259a471327faee3de19b61199f08f2cc72f2bf01bfa635f80de528
+    sha256: 413af1c777dd66018067db7de51ad8c1cacc9956c1d8034d570a61bab077509f
 
 build:
-  number: 1
+  number: 0
   script:
     - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
     - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
