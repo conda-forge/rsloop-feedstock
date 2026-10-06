@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "0.1.54"
+  version: "0.1.56"
 
 package:
   name: rsloop
@@ -9,7 +9,7 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/r/rsloop/rsloop-${{ version }}.tar.gz
-    sha256: a88e4449a5c31b7ced782b581d75bb6a7abb632f25423bb2c9d6407c2047f94b
+    sha256: 89adb1bd567229dd1b16964a26361a12fda82f749627e7bbfb28d8f7438af66a
 
 build:
   number: 0
@@ -29,7 +29,7 @@ requirements:
     - cargo-bundle-licenses
     - maturin
   host:
-    - maturin
+    - maturin >=1.9.4,<2
     - pip
     - python
   run:
