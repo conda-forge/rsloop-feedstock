@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "0.1.64"
+  version: "0.1.68"
 
 package:
   name: rsloop
@@ -9,13 +9,18 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/r/rsloop/rsloop-${{ version }}.tar.gz
-    sha256: 9cf1db378f864b1c09bed09fac58e01c4b2c05853758134a1dbbc308d48d601d
+    sha256: fd35b3107c231d313f1992fd01e0a505e28d97853552dc75e37e11b0b3761660
 
 build:
   number: 0
   script:
-    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
-    - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
+    env:
+      # The CMake builder keeps jitterentropy's -O0 after conda's CFLAGS.
+      AWS_LC_SYS_CMAKE_BUILDER: "1"
+      CMAKE_GENERATOR: Ninja
+    content:
+      - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
+      - cargo-bundle-licenses --format yaml --output THIRDPARTY.yml
 
 requirements:
   build:
@@ -26,6 +31,12 @@ requirements:
     - ${{ compiler('c') }}
     - ${{ stdlib('c') }}
     - ${{ compiler('rust') }}
+    # allocator_api was stabilized in Rust 1.100.
+    - rust >=1.100
+    - cmake
+    - ninja
+    - if: win
+      then: nasm
     - cargo-bundle-licenses
     - maturin
   host:
