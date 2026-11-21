@@ -12,7 +12,7 @@ source:
     sha256: 49c2976635eecf7e502bf270d23575936c0d5026bf0bf6210e9d5b6d8dfc16c0
 
 build:
-  number: 0
+  number: 1
   script:
     env:
       # The CMake builder keeps jitterentropy's -O0 after conda's CFLAGS.
