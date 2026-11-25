@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "0.1.69"
+  version: "0.1.70"
 
 package:
   name: rsloop
@@ -9,10 +9,10 @@ package:
 
 source:
   - url: https://pypi.org/packages/source/r/rsloop/rsloop-${{ version }}.tar.gz
-    sha256: 49c2976635eecf7e502bf270d23575936c0d5026bf0bf6210e9d5b6d8dfc16c0
+    sha256: 4f7d7dd29044b2c0c70ac0ff9e58c7973ca697c950fad0155d266d51d0496632
 
 build:
-  number: 1
+  number: 0
   script:
     env:
       # The CMake builder keeps jitterentropy's -O0 after conda's CFLAGS.
